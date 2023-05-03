@@ -22,7 +22,7 @@ const Chef = ({info}) => {
           <>Numbers of recipes: {number} items</>
         </Card.Text>
         <Card.Text>
-        <> <span className='text-primary fs-5 fw-bold'><FaThumbsUp style={{marginBottom:'5px'}} /> Likes: {likes}</span></>
+        <> <span className='text-primary fs-5 fw-bold'> Likes: <FaThumbsUp style={{marginBottom:'5px'}} /> {likes}</span></>
         </Card.Text>
         <Link to={`/info/${info.id}`}><Button style={{position:'absolute', bottom:'0'}} variant="primary">View Recipes</Button></Link>
       </Card.Body>
