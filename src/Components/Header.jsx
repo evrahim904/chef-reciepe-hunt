@@ -6,11 +6,17 @@ import { authContext } from '../Provider/AuthProvider';
 import ibrahim from '../assets/ibrahim.jpeg'
 
 const Header = () => {
- const {user} = useContext(authContext);
- console.log(user)
+ const {user,logOut} = useContext(authContext);
+ const handleLogOut = () =>{
+  logOut()
+  .then()
+  .catch(error =>{
+    console.log(error)
+  })
+ }
     return (
        <section>
-        
+       
         <Container>
            <Navbar className='' collapseOnSelect expand="lg"  variant="light" bg='light'>
           <Navbar.Brand href="#home">The Tasty Table
@@ -22,10 +28,15 @@ const Header = () => {
               <Nav.Link href="#pricing">blog</Nav.Link>
             </Nav>
             <Nav>
-              <Link to="/login"><Button variant="secondary">login</Button></Link>
+           
+            {user ? <><Button onClick={handleLogOut} variant="danger">Logout</Button>
+             
+            <Image  style={{height:'40px',width:'40px',marginLeft:'5px'}} src={user.photoURL} roundedCircle /> </>  :
+  <Link to="/login"><Button variant="secondary">login</Button></Link>
+    }
 
-              <Image style={{height:'40px',width:'40px',marginLeft:'5px'}} src={ibrahim} roundedCircle />
             </Nav>
+            
           </Navbar.Collapse>
       </Navbar>
         </Container>

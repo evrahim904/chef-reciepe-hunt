@@ -4,6 +4,7 @@ import Header from "../Components/Header";
 import Recipes from "../Home/Recipes";
 import Login from "../Components/Login";
 import Register from "../Components/Register";
+import PrivateRoutes from "./PrivateRoutes";
 
 
 const router = createBrowserRouter([
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
         {
 
             path:'/info/:id',
-            element:<Recipes></Recipes>,
+            element:<PrivateRoutes><Recipes></Recipes></PrivateRoutes>,
             loader:({params}) =>fetch(`http://localhost:5000/data/${params.id}`)
             
         },

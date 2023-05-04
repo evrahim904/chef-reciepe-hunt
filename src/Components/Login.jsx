@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../Provider/AuthProvider';
 
 const Login = () => {
-    const {signIn} = useContext(authContext);
+    const {signIn,signInWIthGoogle,signInWithGit} = useContext(authContext);
+    const navigate = useNavigate()
     const handleLogin = event =>{
         
         event.preventDefault()
@@ -18,11 +19,18 @@ const Login = () => {
             const loggedUser = result.user;
             console.log(loggedUser)
             event.target.reset()
-
+           navigate('/')
         })
         .catch(error =>{
             console.log(error)
         })
+    }
+    const handlSignIn = () =>{
+      signInWIthGoogle()
+      
+    }
+    const handleSignInGit = () =>{
+      signInWithGit()
     }
     return (
      <Container style={{width:'30%',}}>
@@ -38,18 +46,26 @@ const Login = () => {
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" name='password' placeholder="Password" required />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button style={{width:'100%'}} variant="primary" type="submit">
         Login
       </Button>
    <br />
       <Form.Text className="text-secondary">
          new to Tasty Table? Create account.<Link to="/register">Register</Link>
         </Form.Text>
+        <hr /> 
+       
       <Form.Text className="text-danger">
         </Form.Text>
         <Form.Text className="text-success">
         </Form.Text>
     </Form>
+    <Button onClick={handlSignIn} style={{width:'100%',marginBottom:'5px'}} variant="info" type="submit">
+        continue with google
+      </Button>
+      <Button onClick={handleSignInGit} style={{width:'100%'}} variant="dark" type="submit">
+      continue with Github
+      </Button>
      </Container>
     );
 };
