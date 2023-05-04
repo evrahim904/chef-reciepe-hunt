@@ -1,8 +1,13 @@
-import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Button, Card, Container, Image, Nav, Navbar } from 'react-bootstrap';
 import { Link, Outlet } from 'react-router-dom';
+import Footer from './Footer';
+import { authContext } from '../Provider/AuthProvider';
+import ibrahim from '../assets/ibrahim.jpeg'
 
 const Header = () => {
+ const {user} = useContext(authContext);
+ console.log(user)
     return (
        <section>
         
@@ -13,17 +18,20 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mx-auto">
-              <Nav.Link href="#features">home</Nav.Link>
+              <Link style={{textDecoration: 'none'}} to="/">home</Link>
               <Nav.Link href="#pricing">blog</Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link to="/blog">login</Nav.Link>
-              <Link to="/blog">blog</Link>
+              <Link to="/login"><Button variant="secondary">login</Button></Link>
+
+              <Image style={{height:'40px',width:'40px',marginLeft:'5px'}} src={ibrahim} roundedCircle />
             </Nav>
           </Navbar.Collapse>
       </Navbar>
         </Container>
         <Outlet></Outlet>
+        
+        <Footer></Footer>
        </section>
     );
 };

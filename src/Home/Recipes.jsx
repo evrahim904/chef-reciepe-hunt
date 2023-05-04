@@ -1,28 +1,20 @@
 import React from 'react';
 import { Button, Card, Col, Container, Image, ListGroup, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
-import { FaThumbsUp } from 'react-icons/fa';
+import { FaThumbsUp,FaRegStar,FaStar } from 'react-icons/fa';
+import Rating from 'react-rating';
 
 
 const Recipes = () => {
     const chefInfo = useLoaderData()
     console.log(chefInfo)
+    const ingrident = chefInfo.recipes[0].ingredients;
+    console.log(ingrident)
+
     return (
         
         <Container>
-            {/* <section style={{marginTop:'170px'}} className='d-flex justify-content-between gap-2 '>
-            <div style={{width:'450px',height:'400px'}} className='bg-info rounded'>
-              <h2>Name: {chefInfo.name}</h2>
-              <p><small>Description: {chefInfo.description}</small></p>
-              <p>Experience: {chefInfo.yearsExperience}years </p>
-              <p>Numbers of recipes: {chefInfo.number} items</p>
-              <p className='text-primary fs-5 fw-bold'> Likes: <FaThumbsUp style={{marginBottom:'5px'}} /> {chefInfo.likes}</p>
-            </div>
-            <div>
-            <Image className='rounded' style={{width:'700px',}} src={chefInfo.image} fluid />
-            </div>
-            </section> */}
-        <div class="jumbotron">
+        <div style={{position:'relative'}} className="jumbotron">
             <div  className='rounded d-flex justify-content-center'>
 
         <Card.Img className='rounded' style={{width:'700px',}} src={chefInfo.image} />
@@ -38,53 +30,77 @@ const Recipes = () => {
                 <h4>Chef's recipes</h4>
               <Row>
         <Col>
-        <Card variant="light" bg='light' style={{ width: '18rem' }}>
+        <Card variant="light" bg='light' style={{ width: '18rem' ,height:'12rem' }}>
       <Card.Body>
         <Card.Title>Recipe name: {chefInfo.recipes[0].name}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">Ingrident: {chefInfo.recipes[0].ingredients }</Card.Subtitle>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+        <Card.Subtitle className="mb-2 text-muted">Ingridents:{chefInfo.recipes[0].ingredients}</Card.Subtitle>
+        <Card.Text className='mb-0'>
+        Cooking Method: {chefInfo.recipes[0].cookingMethod}
         </Card.Text>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
+        <Rating
+            placeholderRating={chefInfo.recipes[2].rating}
+            readonly
+            emptySymbol={<FaRegStar/>}
+            placeholderSymbol={<FaStar className='text-warning'></FaStar>}
+            fullSymbol={<FaStar></FaStar>}
+        >
+    
+        </Rating>
+        <br />
+        <Button variant="info">Favorite</Button>
+      </Card.Body>
+    </Card>
+        </Col>
+     
+        <Col>
+        <Card variant="light" bg='light' style={{ width: '18rem',height:'12rem' }}>
+      <Card.Body>
+        <Card.Title>Recipe name: {chefInfo.recipes[1].name}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">Ingridents: {chefInfo.recipes[0].ingredients}</Card.Subtitle>
+        <Card.Text style={{marginBottom:'0'}}>
+        Cooking Method: {chefInfo.recipes[1].cookingMethod}
+        </Card.Text>
+        <Rating
+            placeholderRating={chefInfo.recipes[2].rating}
+            readonly
+            emptySymbol={<FaRegStar/>}
+            placeholderSymbol={<FaStar className='text-warning'></FaStar>}
+            fullSymbol={<FaStar></FaStar>}
+        >
+    
+        </Rating> <br />
+        <Button variant="info">Favorite</Button>
       </Card.Body>
     </Card>
         </Col>
         <Col>
-        <Card style={{ width: '18rem' }}>
+        <Card variant="light" bg='light' style={{ width: '18rem',height:'12rem' }}>
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+        <Card.Title>Recipe name: {chefInfo.recipes[2].name}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">Ingridents: {chefInfo.recipes[0].ingredients}</Card.Subtitle>
+        <Card.Text  style={{marginBottom:'0'}}>
+        Cooking Method: {chefInfo.recipes[2].cookingMethod}
         </Card.Text>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
+        <Rating
+            placeholderRating={chefInfo.recipes[2].rating}
+            readonly
+            emptySymbol={<FaRegStar/>}
+            placeholderSymbol={<FaStar className='text-warning'></FaStar>}
+            fullSymbol={<FaStar></FaStar>}
+        >
+    
+        </Rating> <br />
+        <Button variant="info">Favorite</Button>
       </Card.Body>
     </Card>
         </Col>
-        <Col>
-        <Card style={{ width: '18rem' }}>
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
-      </Card.Body>
-    </Card>
-        </Col>
+     
+        
       </Row>
           
               </div>
             </div>
-
-</div>
+           </div>
         </Container>
     );
 };
