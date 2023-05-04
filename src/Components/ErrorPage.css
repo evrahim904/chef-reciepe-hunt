@@ -1,0 +1,22 @@
+
+
+.error-page{
+    display: flex;
+    justify-items: center;
+    padding: 100px;
+    background-color: gray;
+   height: 100%;
+}
+.error{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    margin: 20px;
+}
+/* w-40 h-40 text-yellow-500 */
+.face{
+    width: 200px;
+    height: 200px;
+    color: yellow;
+}

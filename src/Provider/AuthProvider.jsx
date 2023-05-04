@@ -4,16 +4,22 @@ import app from '../firebase/firebase.config';
 
 export const authContext = createContext(null)
 
+
 const auth = getAuth(app)
+
 const provider = new GoogleAuthProvider()
 const gitProvider = new GithubAuthProvider()
 
 const AuthProvider = ({children}) => {
     const [user,SetUser]  = useState(null);
+    const [loading,setLoading] = useState(true);
+
     const creatUser = (email,password)=>{
+        setLoading(true);
         return createUserWithEmailAndPassword(auth,email,password)
     }
     const signIn = (email,password) =>{
+        setLoading(true);
         return signInWithEmailAndPassword(auth,email,password)
     }
     const updateUserData = (user,name,photo) =>{
@@ -29,7 +35,8 @@ const AuthProvider = ({children}) => {
         })
     }
     const logOut = () =>{
-        signOut(auth)
+        setLoading(true);
+        signOut(auth);
     }
     const signInWIthGoogle = () =>{
         signInWithPopup(auth,provider)
@@ -57,6 +64,7 @@ const AuthProvider = ({children}) => {
        const unsubscribe = onAuthStateChanged(auth,loggedUser =>{
            console.log('loggedin user', loggedUser)
            SetUser(loggedUser)
+           setLoading(false)
         })
         return(()=>{
             unsubscribe();
@@ -66,12 +74,15 @@ const AuthProvider = ({children}) => {
 
     const authInfo = {
         user ,
+        loading,
         creatUser,
         signIn,
         updateUserData,
         logOut,
         signInWIthGoogle,
         signInWithGit
+        
+
 
     };
    

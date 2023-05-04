@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Card, Col, Container, Image, ListGroup, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import { FaThumbsUp,FaRegStar,FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Recipes = () => {
     const chefInfo = useLoaderData()
@@ -11,6 +12,14 @@ const Recipes = () => {
     const ingrident = chefInfo.recipes[0].ingredients;
     console.log(ingrident)
 
+  
+    
+
+
+  const handleClick = (event) => {
+    event.currentTarget.disabled = true;
+    toast("Wow so easy!")
+  };
     return (
         
         <Container>
@@ -27,7 +36,7 @@ const Recipes = () => {
               <p><span><strong>Numbers of recipes:</strong></span> {chefInfo.number} items</p>
               <p className='text-primary fs-5 fw-bold'> Likes: <FaThumbsUp style={{marginBottom:'5px'}} /> {chefInfo.likes}</p> 
               <div>
-                <h4>Chef's recipes</h4>
+                <h4>Chef's recipes </h4>
               <Row>
         <Col>
         <Card variant="light" bg='light' style={{ width: '18rem' ,height:'12rem' }}>
@@ -47,7 +56,7 @@ const Recipes = () => {
     
         </Rating>
         <br />
-        <Button variant="info">Favorite</Button>
+        <Button onClick={handleClick}  variant="info">Favorite</Button>
       </Card.Body>
     </Card>
         </Col>
@@ -69,7 +78,7 @@ const Recipes = () => {
         >
     
         </Rating> <br />
-        <Button variant="info">Favorite</Button>
+        <Button onClick={handleClick}  variant="info">Favorite</Button>
       </Card.Body>
     </Card>
         </Col>
@@ -90,7 +99,8 @@ const Recipes = () => {
         >
     
         </Rating> <br />
-        <Button variant="info">Favorite</Button>
+        <Button id='btn' onClick={handleClick} variant="info">Favorite</Button>
+      
       </Card.Body>
     </Card>
         </Col>
@@ -101,7 +111,9 @@ const Recipes = () => {
               </div>
             </div>
            </div>
+           <ToastContainer></ToastContainer>
         </Container>
+        
     );
 };
 

@@ -5,12 +5,14 @@ import Recipes from "../Home/Recipes";
 import Login from "../Components/Login";
 import Register from "../Components/Register";
 import PrivateRoutes from "./PrivateRoutes";
+import ErrorPage from "../Components/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
         path:'/',
     element: <Header></Header>,
+    errorElement:<ErrorPage></ErrorPage>,
     
     children:[
         {
@@ -20,7 +22,7 @@ const router = createBrowserRouter([
         {
 
             path:'/info/:id',
-            element:<PrivateRoutes><Recipes></Recipes></PrivateRoutes>,
+            element:<Recipes></Recipes>,
             loader:({params}) =>fetch(`http://localhost:5000/data/${params.id}`)
             
         },
