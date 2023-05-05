@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Card, Col, Container, Image, ListGroup, Row } from 'react-bootstrap';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { FaThumbsUp,FaRegStar,FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ActiveLink from '../Components/ActiveLink';
 
 const Recipes = () => {
     const chefInfo = useLoaderData()
@@ -100,7 +101,7 @@ const Recipes = () => {
     
         </Rating> <br />
         <Button id='btn' onClick={handleClick} variant="info">Favorite</Button>
-      
+      <nav><ActiveLink>hello</ActiveLink></nav>
       </Card.Body>
     </Card>
         </Col>

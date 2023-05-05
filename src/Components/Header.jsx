@@ -4,6 +4,7 @@ import { Link, Outlet } from 'react-router-dom';
 import Footer from './Footer';
 import { authContext } from '../Provider/AuthProvider';
 import ibrahim from '../assets/ibrahim.jpeg'
+import ActiveLink from './ActiveLink';
 
 const Header = () => {
  const {user,logOut} = useContext(authContext);
@@ -23,16 +24,16 @@ const Header = () => {
 </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mx-auto">
-              <Link style={{textDecoration: 'none'}} to="/">home</Link>
-              <Nav.Link href="#pricing">blog</Nav.Link>
+            <Nav className="mx-auto gap-2">
+              <ActiveLink style={{textDecoration: 'none'}} to="/">home</ActiveLink>
+              <ActiveLink to="/blog">blog</ActiveLink>
             </Nav>
             <Nav>
            
             {user ? <><Button onClick={handleLogOut} variant="danger">Logout</Button>
              
             <Image  style={{height:'40px',width:'40px',marginLeft:'5px'}} src={user.photoURL} roundedCircle /> </>  :
-  <Link to="/login"><Button variant="secondary">login</Button></Link>
+  <Link to="/login"><Button  variant="secondary">login</Button></Link>
     }
 
             </Nav>
@@ -42,7 +43,7 @@ const Header = () => {
         </Container>
         <Outlet></Outlet>
         
-        <Footer></Footer>
+        
        </section>
     );
 };
