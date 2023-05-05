@@ -24,7 +24,7 @@ const router = createBrowserRouter([
 
             path:'/info/:id',
             element:<Recipes></Recipes>,
-            loader:({params}) =>fetch(`http://localhost:5000/data/${params.id}`)
+            loader:({params}) =>fetch(`https://chef-recepie-server-evrahim904.vercel.app/data/${params.id}`)
             
         },
         {

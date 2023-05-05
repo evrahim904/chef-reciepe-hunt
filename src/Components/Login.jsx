@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../Provider/AuthProvider';
@@ -6,6 +6,7 @@ import { authContext } from '../Provider/AuthProvider';
 const Login = () => {
     const {signIn,signInWIthGoogle,signInWithGit} = useContext(authContext);
     const navigate = useNavigate()
+    const [error, setError] = useState()
     const handleLogin = event =>{
         
         event.preventDefault()
@@ -14,20 +15,34 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email,password)
+
+// ***/ validation/***/
+       if(password.length < 6){
+        setError('password should be 6 character')
+       }
+       if (!email || email.length === 0) {
+        setError( 'Email cannot be empty');
+      }
+       if (!password || password.length === 0) {
+        setError( 'password cannot be empty');
+      }
         signIn(email,password)
         .then(result =>{
             const loggedUser = result.user;
             console.log(loggedUser)
             event.target.reset()
-           navigate('/')
+         
+            navigate('/')
+          
+           
         })
         .catch(error =>{
-            console.log(error)
+          console.log(error.message)
         })
     }
     const handlSignIn = () =>{
       signInWIthGoogle()
-      
+      useEmailValidation()
     }
     const handleSignInGit = () =>{
       signInWithGit()
@@ -38,13 +53,13 @@ const Login = () => {
           <Form onSubmit={handleLogin} >
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" name='email' placeholder="Enter email" required />
+        <Form.Control type="email" name='email' placeholder="Enter email" />
        
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" name='password' placeholder="Password" required />
+        <Form.Control type="password" name='password' placeholder="Password"  />
       </Form.Group>
       <Button style={{width:'100%'}} variant="primary" type="submit">
         Login
@@ -53,9 +68,9 @@ const Login = () => {
       <Form.Text className="text-secondary">
          new to Tasty Table? Create account.<Link to="/register">Register</Link>
         </Form.Text>
-        <hr /> 
-       
+        <hr className='mb-2' /> 
       <Form.Text className="text-danger">
+        {error}
         </Form.Text>
         <Form.Text className="text-success">
         </Form.Text>

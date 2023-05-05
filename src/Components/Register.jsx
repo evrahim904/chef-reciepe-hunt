@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../Provider/AuthProvider';
 
 const Register = () => {
     const {creatUser,updateUserData} = useContext(authContext)
- 
+    const navigate = useNavigate()
     const handleRegister = event =>{
         event.preventDefault();
         const form = event.target;
@@ -19,10 +19,12 @@ const Register = () => {
             const createdUser = result.user;
             console.log(creatUser)
             updateUserData(result.user, name ,photo)
+            event.target.reset()
+            navigate('/')
         })
         .catch(error =>{
 
-            console.log(error)
+            console.log(error.message)
         })
     }
    

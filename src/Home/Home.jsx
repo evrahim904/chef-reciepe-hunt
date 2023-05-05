@@ -4,7 +4,7 @@ import './Home.css'
 const Home = () => {
     const [formation,setInformation] =useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/data')
+        fetch('https://chef-recepie-server-evrahim904.vercel.app/data')
         .then(res =>res.json())
         .then(data => setInformation(data))
         .catch(error => console.error(error))

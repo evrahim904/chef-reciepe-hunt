@@ -5,6 +5,10 @@ import Footer from './Footer';
 import { authContext } from '../Provider/AuthProvider';
 import ibrahim from '../assets/ibrahim.jpeg'
 import ActiveLink from './ActiveLink';
+import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip } from 'react-tooltip'
+
+
 
 const Header = () => {
  const {user,logOut} = useContext(authContext);
@@ -27,12 +31,14 @@ const Header = () => {
             <Nav className="mx-auto gap-2">
               <ActiveLink style={{textDecoration: 'none'}} to="/">home</ActiveLink>
               <ActiveLink to="/blog">blog</ActiveLink>
+
             </Nav>
             <Nav>
            
             {user ? <><Button onClick={handleLogOut} variant="danger">Logout</Button>
-             
-            <Image  style={{height:'40px',width:'40px',marginLeft:'5px'}} src={user.photoURL} roundedCircle /> </>  :
+           
+
+            <Image  className="my-anchor-element" data-tooltip-content={user.displayName}  style={{height:'40px',width:'40px',marginLeft:'5px'}} src={user.photoURL} roundedCircle /> <Tooltip anchorSelect=".my-anchor-element" /> </>  :
   <Link to="/login"><Button  variant="secondary">login</Button></Link>
     }
 
