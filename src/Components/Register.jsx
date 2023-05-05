@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../Provider/AuthProvider';
+import './Register.css'
 
 const Register = () => {
     const {creatUser,updateUserData} = useContext(authContext)
@@ -30,7 +31,7 @@ const Register = () => {
    
 
     return (
-        <Container style={{width:'30%',}}>
+        <Container className='register'>
         <h1>Registration</h1>
           <Form onSubmit={handleRegister}>
       <Form.Group className="mb-3" controlId="formBasicEmail">

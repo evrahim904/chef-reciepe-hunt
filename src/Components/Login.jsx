@@ -50,7 +50,7 @@ const Login = () => {
       signInWithGit()
     }
     return (
-     <Container className='login' style={{width:'30%',}}>
+     <Container className='login' >
         <h1>Please Login</h1>
           <Form onSubmit={handleLogin} >
       <Form.Group className="mb-3" controlId="formBasicEmail">

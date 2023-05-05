@@ -1,9 +1,10 @@
 import React from 'react';
 import Footer from './Footer';
+import { Button } from 'react-bootstrap';
 const Blog = () => {
     return (
         <section>
-       
+       <Button variant='primary'>pdf</Button>
         <div style={{marginBottom:'280px'}}>
             <h3> differences between uncontrolled and controlled components?</h3>
             <p><strong>answer:controlled components refer to components that have their state and behavior controlled by the parent component. These components rely on props passed down from the parent component to update their state and behavior. Uncontrolled components refer to components that manage their own state internally.</strong></p>
