@@ -10,7 +10,7 @@ const Chef = ({info}) => {
     return (
         <div>
             <Container > 
-            <Card  className='rounded-lg'
+            <Card  className='rounded-lg '
               style={{ width: '100%',height:'420px' ,position:'relative'}}>
       <Card.Img style={{width:'100%'}} variant="top" src={image} />
       <Card.Body>

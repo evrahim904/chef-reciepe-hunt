@@ -29,7 +29,7 @@ const Recipes = () => {
             <div  className='rounded d-flex justify-content-center'>
          
    <LazyLoad >
-        <Card.Img className='rounded' style={{width:'700px',}} src={chefInfo.image} />
+        <Card.Img className='rounded ' style={{width:'700px',}} src={chefInfo.image} />
         </LazyLoad>
             </div>
   <hr className="my-4" />
@@ -104,7 +104,6 @@ const Recipes = () => {
     
         </Rating> <br />
         <Button id='btn' onClick={handleClick} variant="info">Favorite</Button>
-      <nav><ActiveLink>hello</ActiveLink></nav>
       </Card.Body>
     </Card>
         </Col>

@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../Provider/AuthProvider';
+import './Login.css'
 
 const Login = () => {
     const {signIn,signInWIthGoogle,signInWithGit} = useContext(authContext);
@@ -49,7 +50,7 @@ const Login = () => {
       signInWithGit()
     }
     return (
-     <Container style={{width:'30%',}}>
+     <Container className='login' style={{width:'30%',}}>
         <h1>Please Login</h1>
           <Form onSubmit={handleLogin} >
       <Form.Group className="mb-3" controlId="formBasicEmail">
