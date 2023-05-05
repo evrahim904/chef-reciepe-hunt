@@ -1,7 +1,5 @@
 import React from 'react';
 import Footer from './Footer';
-import imge from '../assets/ibrahim.jpeg'
-
 const Blog = () => {
     return (
         <section>
