@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ActiveLink from '../Components/ActiveLink';
 import LazyLoad from 'react-lazy-load';
+import Footer from '../Components/Footer';
 
 const Recipes = () => {
     const chefInfo = useLoaderData()
@@ -115,6 +116,7 @@ const Recipes = () => {
             </div>
            </div>
            <ToastContainer></ToastContainer>
+           <Footer></Footer>
         </Container>
         
     );
