@@ -12,7 +12,7 @@ const Home = () => {
     return (
         <section className='container'>
             
-            <h4 className='text-center'>French Chefs Info</h4>
+            <h4 className='text-center'>The Tasty Table</h4>
             
  <div className='row'>
  <div className='grid-container'>
