@@ -6,6 +6,7 @@ import Rating from 'react-rating';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ActiveLink from '../Components/ActiveLink';
+import LazyLoad from 'react-lazy-load';
 
 const Recipes = () => {
     const chefInfo = useLoaderData()
@@ -26,8 +27,10 @@ const Recipes = () => {
         <Container>
         <div style={{position:'relative'}} className="jumbotron">
             <div  className='rounded d-flex justify-content-center'>
-
+         
+   <LazyLoad >
         <Card.Img className='rounded' style={{width:'700px',}} src={chefInfo.image} />
+        </LazyLoad>
             </div>
   <hr className="my-4" />
   <div  className='bg-info rounded px-2 py-2 text-center '>
