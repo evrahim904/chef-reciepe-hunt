@@ -1,16 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../Provider/AuthProvider';
 
 const Login = () => {
     const {signIn,signInWIthGoogle,signInWithGit} = useContext(authContext);
     const navigate = useNavigate()
     const [error, setError] = useState()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || './'
+
     const handleLogin = event =>{
-        
         event.preventDefault()
-       
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
@@ -32,7 +33,7 @@ const Login = () => {
             console.log(loggedUser)
             event.target.reset()
          
-            navigate('/')
+            navigate(from)
           
            
         })

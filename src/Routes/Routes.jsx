@@ -23,7 +23,7 @@ const router = createBrowserRouter([
         {
 
             path:'/info/:id',
-            element:<Recipes></Recipes>,
+            element:<PrivateRoutes><Recipes></Recipes></PrivateRoutes>,
             loader:({params}) =>fetch(`https://chef-recepie-server-evrahim904.vercel.app/data/${params.id}`)
             
         },
