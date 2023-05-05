@@ -18,7 +18,7 @@ const Recipes = () => {
 
   const handleClick = (event) => {
     event.currentTarget.disabled = true;
-    toast("Wow so easy!")
+    toast("added as favorite")
   };
     return (
         

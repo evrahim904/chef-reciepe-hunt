@@ -5,18 +5,18 @@ import './ErrorPage.css'
 const ErrorPage = () => {
     
     return (
-        <section  className="error-page">
+        <section   className="error-page">
           <div className="error">
             <FaceFrownIcon className="face" />
             <div className="max-w-md text-center">
               <h2 className="mb-8 font-extrabold text-9xl text-yellow-500">
-                <span className="sr-only">Error</span>
+                <span className="text-danger">Error</span>
                 
               </h2>
               <p className="text-2xl font-semibold md:text-3xl text-red-800 mb-8">
               
               </p>
-              <Link to="/" className="btn">
+              <Link to="/" className="btn text-primary">
                 Back to homepage
               </Link>
             </div>
